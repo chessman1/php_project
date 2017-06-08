@@ -24,21 +24,29 @@
     {!! Form::open(array('route' => 'bookCRUD.store','method'=>'POST', 'files' => 'true')) !!}
     <div class="row">
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        
             <div class="form-group">
+            <div class="col-xs-12 col-sm-12 col-md-12">
                 <strong>Book:</strong>
                 {!! Form::text('name', null, array('placeholder' => 'Book','class' => 'form-control', 'autofocus' => 'autofocus')) !!}
                 <strong>AuthorID:</strong>
                 {!! Form::select('author_id', App\Author::pluck('author', 'id')->toArray(), null,
                 ['class' => 'form-control']) !!}
-                <strong>Category:</strong>
-                {!! Form::select('categories[]', App\Category::pluck('category', 'id')->toArray(), null,
-                ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+                <strong>Categories:</strong>
+                         
+                @foreach($categories as $i => $ctg)
+                    {!! Form::checkbox('categories[' . $i . ']', $i, null,
+                    ['id' => 'category-' . $i, 'class' => 'checkbox-inline']) !!}
+                    {!! Form::label('category-' . $i, $ctg , ['class' => 'class-control']) !!}
+                @endforeach
+                
+                <div>
                 <strong>Upload image:</strong>
-                {!! Form::file('pic',null,['class'=>'form-control', 'enctype' =>
+                {!! Form::file('pic', null, ['class'=>'form-control', 'enctype' =>
                 'multipart/form-data']) !!}
+                </div>
             </div>
-        </div>
+       
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

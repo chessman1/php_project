@@ -31,14 +31,11 @@
      @foreach ($books as $book)
      <tr>
         <td>{{ $book->name }}</td>
-        <td>{{ $book->author->author }}</td>
-        
+        <td>{{ $book->author->author }}</td>   
         <td>
-
         @foreach($book->categories as $ctg)
             {{ $ctg->category }}@if(!$loop->last), @endif
-        @endforeach
-          
+        @endforeach  
         </td>
        
 
@@ -47,7 +44,8 @@
         
         <td>
             <a class="btn btn-primary" href="{{ route('bookCRUD.edit', $book->id) }}">Edit</a>
-            {!! Form::open(['method' => 'DELETE','route' => ['bookCRUD.destroy', $book->id],'style'=>'display:inline']) !!}
+            {!! Form::open(['method' => 'DELETE','route' => 
+            ['bookCRUD.destroy', $book->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
         </td>

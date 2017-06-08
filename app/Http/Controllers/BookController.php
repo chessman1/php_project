@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Book;
+use App\Category;
 
 class BookController extends Controller
 {
@@ -25,7 +26,8 @@ class BookController extends Controller
      */
     public function create(Request $request)
     {
-        return view('create_book');
+        $categories = Category::pluck('category', 'id')->toArray();
+        return view('create_book')->with('categories', $categories);
     }
 
     /**
