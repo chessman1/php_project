@@ -1,0 +1,7 @@
+                                        Review
+                                  
+This is an application which I made during the intern. Laravel framework is used. Users can register and log in. A user can
+add categories and change pictures. A path is saved to database (MySQL). 
+
+There are categories and subcategories for books. I used SQL and MySQL. I learned to use a lot of features of them. Also
+Bootstrap 4 is used for responsive design. The app has basic features. I learnt a lot of good practices during the intern.
